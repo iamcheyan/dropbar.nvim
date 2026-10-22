@@ -262,6 +262,9 @@ M.opts = {
     },
   },
   bar = {
+    -- Optional layout override; return nil to use the symbol renderer.
+    ---@type fun(bar: dropbar_t, plain: boolean?): string?
+    render = nil,
     ---@type boolean|fun(buf: integer, win: integer, info: table?): boolean
     enable = function(buf, win, _)
       buf = vim._resolve_bufnr(buf)

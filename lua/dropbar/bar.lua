@@ -432,6 +432,11 @@ end
 ---@param plain boolean? whether to return a plain string without substrings for highlights and click support
 ---@return string
 function dropbar_t:cat(plain)
+  local render = configs.opts.bar.render
+  if render then
+    local rendered = render(self, plain)
+    if rendered ~= nil then return rendered end
+  end
   if vim.tbl_isempty(self.components) then
     return ''
   end
